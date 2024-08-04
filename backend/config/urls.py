@@ -22,13 +22,15 @@ from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("api/login/", views.UserLogin.as_view()),
-    path("naverlogin/", views.NaverLogin.as_view()),
-    path('naver-login/', views.NaverLoginCallbackView.as_view()),
-    path("api/logout/", views.UserLogout.as_view()),
+    path("api/login", views.UserLogin.as_view()),
+    path("api/logout", views.UserLogout.as_view()),
     path('api/categories/', include("categories.urls")),
     path("api/galleries/", include("galleries.urls")),
     path("api/users/", include("users.urls")),
     path("api/goods/", include("products.urls")),
     path("api/backgrounds", include('backgrounds.urls')),
+
+    path('api/users/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

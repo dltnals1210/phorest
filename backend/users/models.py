@@ -26,18 +26,30 @@ class User(AbstractUser):
     "username은 AbstractUser에 이미 존재"
     "password는 AbstactUser애 이미 존재"
 
-    class LoginPathChoices(models.TextChoices):
-        COMMON = ("common", "일반")
-        KAKAO = ("kakao", "카카오")
-        GOOGLE = ("google", "구글")
-        NAVER = ("naver", "네이버")
+    # class LoginPathChoices(models.TextChoices):
+    #     COMMON = ("common", "일반")
+    #     KAKAO = ("kakao", "카카오")
+    #     GOOGLE = ("google", "구글")
+    #     NAVER = ("naver", "네이버")
+
+    COMMON = "common"
+    KAKAO = "kakao"
+    GOOGLE = "google"
+    NAVER = "naver"
+
+    LOGIN_CHOICES = (
+        (COMMON, "common"),
+        (KAKAO, "kakao"),
+        (GOOGLE, "google"),
+        (NAVER, "naver")
+    )
 
     name = models.CharField(max_length=20, default="---")
     phone = models.CharField(max_length=13, null=True, blank=True)
     email = models.EmailField(unique=True)
     address = models.CharField(max_length=100, null=True, blank=True)
     profile_image = models.ImageField(upload_to="profile", null=True, blank=True)
-    login_path = models.CharField(max_length=6, choices=LoginPathChoices, default=LoginPathChoices.COMMON)
+    login_path = models.CharField(max_length=6, choices=LOGIN_CHOICES, default=COMMON)
     subscribed = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
     like_gallery = models.ManyToManyField("galleries.Gallery", through=UserGallery, related_name="like_users")
