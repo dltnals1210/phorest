@@ -35,7 +35,7 @@ from rest_framework.decorators import api_view, renderer_classes
 
 SITE_DOMAIN = 'http://localhost:8000'
 GOOGLE_CLIENT_ID = '456462903282-doodv1eep7mmjcdupus05bkkie53j58e.apps.googleusercontent.com'
-
+GOOGLE_CLIENT_SECRET = ''
 GOOGLE_REDIRECT_URI = SITE_DOMAIN + "/api/v1/auth/login/google/callback"
 GOOGLE_STATE = os.environ.get('GOOGLE_STATE')
 
