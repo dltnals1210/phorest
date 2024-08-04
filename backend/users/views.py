@@ -33,9 +33,9 @@ from dj_rest_auth.serializers import JWTSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.decorators import api_view, renderer_classes
 
-SITE_DOMAIN = 'http://localhost:8000'
+SITE_DOMAIN = 'http://localhost:8000' # 프론트엔드랑 합쳐서 테스트할 땐, 프론트엔드 주소 넣어야 할거예요 아마도..? http://localhost:3000
 GOOGLE_CLIENT_ID = '456462903282-doodv1eep7mmjcdupus05bkkie53j58e.apps.googleusercontent.com'
-GOOGLE_CLIENT_SECRET = ''
+GOOGLE_CLIENT_SECRET = '' # 노션 -> api 명세서 -> 구글 로그인 페이지에 있는 코드 넣어주세요!
 GOOGLE_REDIRECT_URI = SITE_DOMAIN + "/api/v1/auth/login/google/callback"
 GOOGLE_STATE = os.environ.get('GOOGLE_STATE')
 
